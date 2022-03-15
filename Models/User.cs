@@ -16,9 +16,15 @@ namespace Journal_DataAttributes.Models
         [ForeignKey("JournalNumber")]
         public ICollection<Journal> Journals { get; set; }
 
+        [ForeignKey("CommentId")]
+        public ICollection<Comment> Comments { get; set; }
+
+
+
         public User()
         {
             Journals = new HashSet<Journal>();
+            Comments = new HashSet<Comment>();  
         }
     }
 }
