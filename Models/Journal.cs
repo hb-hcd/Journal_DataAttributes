@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Journal_DataAttributes.Models
 {
@@ -16,6 +17,7 @@ namespace Journal_DataAttributes.Models
 
         public User User { get; set; }
 
+        [ForeignKey("User")]
         public int UserNumber { get; set; }
     }
 }
