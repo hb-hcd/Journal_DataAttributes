@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Journal_DataAttributes.Migrations
 {
     [DbContext(typeof(Journal_DataAttributesContext))]
-    partial class Journal_DataAttributesContextModelSnapshot : ModelSnapshot
+    [Migration("20220315155112_InitialForPatricio")]
+    partial class InitialForPatricio
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +42,7 @@ namespace Journal_DataAttributes.Migrations
 
                     b.HasKey("JournalNumber");
 
-                    b.ToTable("Journal", (string)null);
+                    b.ToTable("Journal");
                 });
 
             modelBuilder.Entity("Journal_DataAttributes.Models.User", b =>
@@ -57,7 +59,7 @@ namespace Journal_DataAttributes.Migrations
 
                     b.HasKey("UserNumber");
 
-                    b.ToTable("User", (string)null);
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("Journal_DataAttributes.Models.Journal", b =>
