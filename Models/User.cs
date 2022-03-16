@@ -13,10 +13,10 @@ namespace Journal_DataAttributes.Models
         [Display(Name = "User Name")]
         public string UserName {get; set; }
 
-        [ForeignKey("JournalNumber")]
+        [ForeignKey("UserNumber")]
         public ICollection<Journal> Journals { get; set; }
 
-        [ForeignKey("CommentId")]
+        [ForeignKey("CommentNumber")]
         public ICollection<Comment> Comments { get; set; }
 
 

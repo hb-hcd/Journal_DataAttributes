@@ -5,8 +5,9 @@ namespace Journal_DataAttributes.Models
 {
     public class Comment
     {
+
         [Key]
-        public int CommentId {get; set;}
+        public int CommentNumber {get; set;}
 
         [Display(Name = "Title")]
         [StringLength(30)]
@@ -17,7 +18,7 @@ namespace Journal_DataAttributes.Models
         public string CommentContent {get; set;}
 
         [ForeignKey("UserNumber")]
-        public int UserNumber { get; set; }
+        public int JournalNumber { get; set; }
 
 
 

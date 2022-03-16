@@ -20,29 +20,6 @@ namespace Journal_DataAttributes.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Journal_DataAttributes.Models.Comment", b =>
-                {
-                    b.Property<int>("CommentId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CommentContent")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<int>("UserNumber")
-                        .HasColumnType("int");
-
-                    b.HasKey("CommentId");
-
-                    b.ToTable("Comment");
-                });
-
             modelBuilder.Entity("Journal_DataAttributes.Models.Journal", b =>
                 {
                     b.Property<int>("JournalNumber")
@@ -63,9 +40,7 @@ namespace Journal_DataAttributes.Migrations
 
                     b.HasKey("JournalNumber");
 
-                    b.HasIndex("UserNumber");
-
-                    b.ToTable("Journal");
+                    b.ToTable("Journal", (string)null);
                 });
 
             modelBuilder.Entity("Journal_DataAttributes.Models.User", b =>
@@ -82,29 +57,14 @@ namespace Journal_DataAttributes.Migrations
 
                     b.HasKey("UserNumber");
 
-                    b.ToTable("User");
-                });
-
-            modelBuilder.Entity("Journal_DataAttributes.Models.Comment", b =>
-                {
-                    b.HasOne("Journal_DataAttributes.Models.User", null)
-                        .WithMany("Comments")
-                        .HasForeignKey("CommentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.ToTable("User", (string)null);
                 });
 
             modelBuilder.Entity("Journal_DataAttributes.Models.Journal", b =>
                 {
-                    b.HasOne("Journal_DataAttributes.Models.User", null)
+                    b.HasOne("Journal_DataAttributes.Models.User", "User")
                         .WithMany("Journals")
                         .HasForeignKey("JournalNumber")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Journal_DataAttributes.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserNumber")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -113,8 +73,6 @@ namespace Journal_DataAttributes.Migrations
 
             modelBuilder.Entity("Journal_DataAttributes.Models.User", b =>
                 {
-                    b.Navigation("Comments");
-
                     b.Navigation("Journals");
                 });
 #pragma warning restore 612, 618
